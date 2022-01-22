@@ -21,20 +21,27 @@ class _HomePageState extends State<HomePage> {
   final List _listText = [
     {
       'id': 0,
+      'botao': false,
       'texto':
           'O “APLICATIVO” auxilia médicos e pacientes na hora de suas consultas, tornando tudo mais rápido e simples.'
     },
     {
       'id': 1,
+      'botao': false,
       'texto':
           'Médicos se registram, atualizam seus horários de consulta e locais de trabalho, em tempo real. Podem também visualizar as informações básicas de seus pacientes e os horários marcados'
     },
     {
       'id': 2,
+      'botao': false,
       'texto':
           'Os pacientes consenguem visualizar se o médico está atrasado, consegue avisar se irá atrasar, mostra os médicos em determinado local e os locais que um determinado médico se encontra'
     },
-    {'id': 3, 'texto': 'Comece agora a sua experiência na nossa plataforma !'}
+    {
+      'id': 3,
+      'botao': true,
+      'texto': 'Comece agora a sua experiência na nossa plataforma !'
+    }
   ];
 
   @override
@@ -53,44 +60,53 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: _listSlide.length,
-              itemBuilder: (_, currentIndex) {
-                bool activePage = currentIndex == _currentPage;
-                return SlideTile(
-                  id: _currentPage,
-                  imagem: _listSlide[currentIndex]['imagem'],
-                  texto: _listText[currentIndex]['texto'],
-                );
-              },
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Papel_de_Parede2.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: _listSlide.length,
+                    itemBuilder: (_, currentIndex) {
+                      bool activePage = currentIndex == _currentPage;
+                      return SlideTile(
+                        botao: _listText[currentIndex]['botao'],
+                        imagem: _listSlide[currentIndex]['imagem'],
+                        texto: _listText[currentIndex]['texto'],
+                      );
+                    },
+                  ),
+                ),
+                _buildBullets(),
+              ],
             ),
           ),
-          _buildBullets(),
-        ],
-      ),
-    ));
+        ));
   }
 
   Widget _buildBullets() {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: _listSlide.map((i) {
           return Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             width: 10,
             height: 10,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: _currentPage == i['id']
-                  ? Color(0xffEB5E28)
-                  : Color(0xff172A3A),
+                  ? const Color(0xffEB5E28)
+                  : const Color(0xff172A3A),
             ),
           );
         }).toList(),
