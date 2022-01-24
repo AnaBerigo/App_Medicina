@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_medicina/screens/signup_page.dart';
 
 class SlideTile extends StatelessWidget {
   final String? imagem;
@@ -9,7 +10,7 @@ class SlideTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(15, 35, 15, 0),
+      padding: const EdgeInsets.fromLTRB(15, 35, 15, 0),
       child: Stack(
         children: [
           Column(
@@ -31,7 +32,12 @@ class SlideTile extends StatelessWidget {
             right: 0,
             child: botao == true
                 ? TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignupPage()),
+                      );
+                    },
                     child: const Text(
                       'Vamos lá →',
                       textAlign: TextAlign.center,

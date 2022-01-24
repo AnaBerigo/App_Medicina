@@ -1,14 +1,14 @@
 import 'package:app_medicina/components/slide_tile.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SlidePage extends StatefulWidget {
+  const SlidePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SlidePage> createState() => _SlidePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SlidePageState extends State<SlidePage> {
   final PageController _pageController = PageController(viewportFraction: 0.9);
   int _currentPage = 0;
 
@@ -76,7 +76,6 @@ class _HomePageState extends State<HomePage> {
                     controller: _pageController,
                     itemCount: _listSlide.length,
                     itemBuilder: (_, currentIndex) {
-                      bool activePage = currentIndex == _currentPage;
                       return SlideTile(
                         botao: _listText[currentIndex]['botao'],
                         imagem: _listSlide[currentIndex]['imagem'],

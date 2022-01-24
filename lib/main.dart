@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_page.dart';
+import 'screens/slide_page.dart';
 
 main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Medicina',
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Comfortaa'),
-      home: HomePage(),
+      home: SlidePage(),
     );
   }
 }
